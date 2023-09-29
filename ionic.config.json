@@ -1,0 +1,7 @@
+{
+  "name": "curlyTailsAdmin",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

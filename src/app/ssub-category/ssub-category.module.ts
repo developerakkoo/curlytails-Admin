@@ -4,18 +4,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AddBannerPageRoutingModule } from './add-banner-routing.module';
+import { SsubCategoryPageRoutingModule } from './ssub-category-routing.module';
 
-import { AddBannerPage } from './add-banner.page';
+import { SsubCategoryPage } from './ssub-category.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
     IonicModule,
-    AddBannerPageRoutingModule
+    ReactiveFormsModule,
+    SsubCategoryPageRoutingModule
   ],
-  declarations: [AddBannerPage]
+  declarations: [SsubCategoryPage]
 })
-export class AddBannerPageModule {}
+export class SsubCategoryPageModule {}

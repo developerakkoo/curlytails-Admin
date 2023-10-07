@@ -11,7 +11,12 @@ export class AppComponent {
     { title: 'Orders', url: '/order', icon: 'bag' },
     { title: 'Users', url: '/user', icon: 'person' },
     { title: 'Enquiries', url: '/enquiry', icon: 'alert' },
+    { title: 'Categories', url: '/category', icon: 'alert' },
+    { title: 'Sub Categories', url: '/ssub-category', icon: 'alert' },
+    { title: 'Product Categories', url: '/product-category', icon: 'alert' },
+    { title: 'Banner', url: '/banner', icon: 'alert' },
     { title: 'Notifications', url: '/notify', icon: 'mail-unread' },
+    { title: 'Refund', url: '/refund', icon: 'mail-unread' },
   ];
  
   constructor() {}

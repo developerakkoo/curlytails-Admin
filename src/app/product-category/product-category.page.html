@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Product Category</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>For Example:- Accessories,Cloths,Chains,Etc</ion-card-subtitle>
+            <ion-card-title>Create New Category</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <ion-item>
+                <ion-label position="floating">Name <ion-text color="danger">*</ion-text></ion-label>
+                <ion-input required formControlName="name" type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Description <ion-text color="danger">*</ion-text></ion-label>
+                <ion-input required formControlName="description" type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Main Category</ion-label>
+                <ion-select formControlName="CategoryId" value="peperoni" multiple="false" placeholder="Select Category">
+                  <ion-select-option *ngFor="let item of categories" [value]="item._id"> {{item.name | uppercase}} </ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>Sub Category</ion-label>
+                <ion-select formControlName="subCategoryId" value="peperoni" multiple="false" placeholder="Select Category">
+                  <ion-select-option *ngFor="let item of subs" [value]="item._id">{{ item.name | uppercase }}</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-button block color="primary" type="submit" [disabled]="form.invalid">
+                Save
+              </ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-text color="tertiary" *ngIf="productCategoryies.length == 0">
+         <h1>No Product Category Found!</h1>
+        </ion-text>
+
+        <ion-list *ngIf="productCategoryies.length > 0">
+          <ion-item *ngFor="let item of productCategoryies">
+            <ion-label> {{item.name}} </ion-label>
+            <ion-button fill="clear" slot="end" (click)="delete(item._id)">
+              <ion-icon slot="icon-only" color="danger" name="trash"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

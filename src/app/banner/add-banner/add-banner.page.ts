@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddBannerPage implements OnInit {
 
+  files!:File;
   constructor() { }
 
   ngOnInit() {
   }
+
+  onFileEvent(ev:any){
+    console.log(ev);
+    //multer field name file single only
+      }
 
 }

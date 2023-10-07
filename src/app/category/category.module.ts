@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AddBannerPageRoutingModule } from './add-banner-routing.module';
+import { CategoryPageRoutingModule } from './category-routing.module';
 
-import { AddBannerPage } from './add-banner.page';
+import { CategoryPage } from './category.page';
 
 @NgModule({
   imports: [
@@ -14,8 +14,8 @@ import { AddBannerPage } from './add-banner.page';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    AddBannerPageRoutingModule
+    CategoryPageRoutingModule
   ],
-  declarations: [AddBannerPage]
+  declarations: [CategoryPage]
 })
-export class AddBannerPageModule {}
+export class CategoryPageModule {}

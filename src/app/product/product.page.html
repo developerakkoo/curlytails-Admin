@@ -33,13 +33,13 @@
       <ion-row>
         <ion-col sizeLg="6" offsetLg="3">
           <ion-list>
-            <ion-item>
+            <ion-item *ngFor="let item of products">
               <ion-avatar slot="start">
-                <img src="https://m.media-amazon.com/images/I/61IUJIyK2yL._SL1000_.jpg" />
+                <img [src]="item.images[0]" />
               </ion-avatar>
               <ion-label>
-                <p> Pedigree Dog Dry Food </p>
-                <p>1200</p>
+                <p> {{item.name}} </p>
+                <p>{{item.price | currency:"INR"}}</p>
               </ion-label>
               <ion-button color="tertiary" fill="clear" (click)="editProduct()">
                 <ion-icon slot="icon-only" name="create"></ion-icon>

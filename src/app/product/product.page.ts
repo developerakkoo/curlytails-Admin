@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductHandlerService } from './product-handler.service';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-product',
@@ -13,12 +14,13 @@ export class ProductPage implements OnInit {
   products:any[] = [];
 
 
-  constructor(private productHandler: ProductHandlerService,
+  constructor(private productService: ProductService,
               private loadingController: LoadingController,
               private toastController: ToastController,
               private router: Router) { }
 
   ngOnInit() {
+    this.loadProducts();
   }
 
   async presentToast(msg:string) {
@@ -36,10 +38,11 @@ export class ProductPage implements OnInit {
     });
 
     await loading.dismiss();
-    this.productHandler.getProduct()
+    this.productService.getAllProduct()
     .subscribe({
       next: async (p:any)=>{
         console.log(p);
+        this.products = p['data'];
         await loading.dismiss();
       },
       error: async(error:Error) =>{
@@ -54,6 +57,17 @@ export class ProductPage implements OnInit {
   onSearchChange(ev:any){
     let term = ev.detail.value;
     console.log(term);
+    this.productService.searchProduct(term)
+    .subscribe({
+      next:async(value:any) =>{
+        console.log(value);
+        
+      },
+      error:async(error:Error) =>{
+        console.log(error);
+        
+      }
+    })
     
     
   }

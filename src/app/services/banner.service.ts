@@ -12,17 +12,17 @@ export class BannerService {
   addBanner(file:File){
     let data = new FormData();
     data.append('file', file, file.name);
-    return this.http.post(environment.URL+ '/add/banner', data);
+    return this.http.post(environment.URL+ 'banner/add', data);
   }
 
   deleteBanner(id:any){
     
-    return this.http.delete(environment.URL+ `/delete/banner/${id}`);
+    return this.http.delete(environment.URL+ `banner/delete/${id}`);
   }
 
 
   getAllBanner(){
-    return this.http.get(environment.URL + `/getAll/banner`);
+    return this.http.get(environment.URL + `banner/getAll`);
   }
   
 }

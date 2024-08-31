@@ -22,6 +22,7 @@ export class ProductService {
   CategoryId:any,
   subCategoryId:string,
   productCategoryId:any,
+  quantities:any,
   imageFiles: FileList,
   isTopProduct:string,
   isTrendingProduct:string){
@@ -40,12 +41,13 @@ export class ProductService {
     data.append("productCategoryId", productCategoryId);
     data.append("isTopProduct", isTopProduct);
     data.append("isTrendingProduct", isTrendingProduct);
+    data.append("quantities", JSON.stringify(quantities));
   // Append each selected file to the FormData object
   for (let i = 0; i < imageFiles.length; i++) {
     data.append('images', imageFiles[i]);
   }
 
-    return this.http.post(environment.URL + `/addProduct`, data)
+    return this.http.post(environment.URL + `product/add`, data)
   }
 
   editProduct(id:any, name:string,
@@ -59,8 +61,10 @@ export class ProductService {
     price:any,
     CategoryId:any,
     subCategoryId:string,
-    productCategoryId:any){
-      return this.http.put(environment.URL + `/update/product/${id}`, {
+    productCategoryId:any,
+    isTopProduct:string,
+  isTrendingProduct:string){
+      return this.http.put(environment.URL + `product/update/${id}`, {
         name,
   brand,
   description,
@@ -78,28 +82,32 @@ export class ProductService {
   }
 
   deleteProduct(id:any){
-    return this.http.delete(environment.URL + `/delete/product/${id}`);
+    return this.http.delete(environment.URL + `product/delete/${id}`);
   }
 
   getAllProduct(){
-    return this.http.get(environment.URL + `/getAll/product`);
+    return this.http.get(environment.URL + `product/getAll`);
   }
 
   getProductById(id:any){
-    return this.http.get(environment.URL + `/get/product/${id}`);
+    return this.http.get(environment.URL + `product/get/${id}`);
   }
 
   getTopProducts(){
-    return this.http.get(environment.URL + `/get-top/product`);
+    return this.http.get(environment.URL + `product/get-top`);
   }
 
   getTrendingProducts(){
-    return this.http.get(environment.URL + `/get-trending/product`)
+    return this.http.get(environment.URL + `product/get-trending`)
   }
 
-  searchProduct(query:string){
-    return this.http.get(environment.URL + `/search/product`,{params:{
+  searchProduct(adminId:any,query:string){
+    return this.http.get(environment.URL + `product/search/${adminId}`,{params:{
       "name":query
     }});
+  }
+
+  deleteProductImage(id:any,productId:any){
+    return this.http.delete(environment.URL + `delete/image/${productId}/${id}`);
   }
 }

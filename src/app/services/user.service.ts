@@ -16,4 +16,14 @@ export class UserService {
   getUserById(id:any){
     return this.http.get(environment.URL + `/get/user/${id}`);
   }
+
+  editUser(id:any, name:any, email:any, phoneNo:string, isBlock:boolean){
+    return this.http.put(environment.URL + `/update/user/${id}`,{
+      name,
+      email,
+      phoneNo,
+      isBlock
+    })
+
+  }
 }

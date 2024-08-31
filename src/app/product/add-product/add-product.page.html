@@ -59,7 +59,16 @@
           <ion-label  position="floating">Price</ion-label>
           <ion-input type="number" required formControlName="price"></ion-input>
         </ion-item>
-
+        <div formArrayName="quantities">
+          <div *ngFor="let quantity of quantities.controls; let i = index" [formGroupName]="i">
+            <input formControlName="size" placeholder="Size">
+            <input formControlName="price" placeholder="Price">
+            <input formControlName="discountedPrice" placeholder="Discounted Price">
+            <button type="button" (click)="removeQuantity(i)">Remove</button>
+          </div>
+          <button type="button" (click)="addQuantity()">Add Quantity</button>
+        </div>
+        
         <ion-item>
           <ion-label  position="floating">Product Category</ion-label>
         

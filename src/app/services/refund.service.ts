@@ -10,7 +10,7 @@ export class RefundService {
   constructor(private http:HttpClient) { }
 
   getAllRefundReq(){
-    return this.http.get(environment.URL + `/admin/getAll/refundReq`);
+    return this.http.get(environment.URL + `refund/getAll`);
   }
 
   //InProcess: 'IN_PROCESS',
@@ -24,6 +24,6 @@ export class RefundService {
   }
 
   deleteRefundReq(id:any){
-    return this.http.delete(environment.URL + `/delete/refund/${id}`);
+    return this.http.delete(environment.URL + `delete/refund/${id}`);
   }
 }

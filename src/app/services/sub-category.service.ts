@@ -34,6 +34,6 @@ export class SubCategoryService {
   }
 
   getAllSubCategory(){
-    return this.http.get(environment.URL + `/getAll/subCategory`);
+    return this.http.get(environment.URL + `subcategory/getAll`);
   }
 }

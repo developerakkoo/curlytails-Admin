@@ -1,0 +1,53 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card class="ion-padding">
+    <ion-card-header>
+      <ion-card-title
+        >Delivery Charges {{100 | currency: "INR"}}</ion-card-title
+      >
+    </ion-card-header>
+    <ion-item>
+      <ion-label>Price</ion-label>
+      <ion-input type="number" placeholder="Enter the price" [(ngModel)]="deliveryPrice"></ion-input>
+    </ion-item>
+    
+<br>
+
+
+
+     
+  </ion-card>
+  
+
+  <ion-card class="ion-padding">
+    <ion-card-header>
+      <ion-card-title>GST Charges {{gst}}% </ion-card-title>
+      <ion-item>
+        <ion-label>Gst Enabled? </ion-label>
+        <ion-toggle [checked]="gstToggle" (ionChange)="gstToggleEvent($event)" slot="end"></ion-toggle>
+      </ion-item>
+    </ion-card-header>
+    <ion-range
+      min="1"
+      max="30"
+      dualKnobs="false"
+      pin="true"
+      snaps="true"
+      step="1"
+      ticks="true"
+      [value]="gst"
+      color="primary"
+      (ionChange)="rangeChangeGST($event)"
+    >
+      <ion-label slot="start">1</ion-label>
+      <ion-label slot="end">30</ion-label>
+    </ion-range>
+  </ion-card>
+
+  <ion-button (click)="onSubmit()" expand="block"> Update Charges </ion-button>
+</ion-content>

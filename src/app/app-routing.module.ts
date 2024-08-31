@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/product',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -54,6 +54,10 @@ const routes: Routes = [
   {
     path: 'refund',
     loadChildren: () => import('./refund/refund.module').then( m => m.RefundPageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
   }
 ];
 

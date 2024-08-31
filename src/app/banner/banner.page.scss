@@ -1,0 +1,14 @@
+.image-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    gap: 20px;
+}
+
+.image-container > img{
+    width: 70%;
+    height: 200px;
+    background-size: cover;
+}

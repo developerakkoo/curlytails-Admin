@@ -57,7 +57,7 @@ export class ProductPage implements OnInit {
   onSearchChange(ev:any){
     let term = ev.detail.value;
     console.log(term);
-    this.productService.searchProduct(term)
+    this.productService.searchProduct("66d08c1794e18eda9b66f68f",term)
     .subscribe({
       next:async(value:any) =>{
         console.log(value);
@@ -77,14 +77,29 @@ export class ProductPage implements OnInit {
 
   }
 
-  editProduct(){
-    this.router.navigate(['product','edit-product', 123]);
+  editProduct(id:any){
+    this.router.navigate(['product','edit-product', id]);
   }
 
-  async deleteProduct(){
+  async deleteProduct(id:any){
     let loading = await this.loadingController.create({
       message:"Deleting product...",
       duration:2000
+    })
+
+    this.productService.deleteProduct(id)
+    .subscribe({
+      next:async (value:any) =>{
+        console.log(value);
+        this.loadingController.dismiss();
+        this.loadProducts();
+        
+      },
+      error:async(error:Error) =>{
+        console.log(error)
+        this.loadingController.dismiss();
+        
+    }
     })
 
     await loading.present();

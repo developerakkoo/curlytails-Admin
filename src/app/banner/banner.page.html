@@ -1,16 +1,19 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Banner</ion-title>
-    <ion-button (click)="openBannerPage()" expand="block" fill="clear" shape="round">
+    <ion-button slot="end" (click)="openBannerPage()" expand="block" fill="clear" shape="round">
       Upload Banner
     </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">banner</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-list>
+  <div class="image-container" *ngFor="let item of banners">
+    <img [src]="item.imageUrl" alt="" srcset="">
+    <ion-button color="danger" (click)="delete(item)">
+      <ion-icon slot="icon-only" name="trash"></ion-icon>
+    </ion-button>
+  </div>
+</ion-list>
 </ion-content>

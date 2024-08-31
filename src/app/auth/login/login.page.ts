@@ -26,8 +26,8 @@ export class LoginPage implements OnInit {
 
   setupForm() {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.email, Validators.required]],
-      password: ['', [Validators.minLength(6), Validators.required]],
+      email: ['admin@est.com', [Validators.email, Validators.required]],
+      password: ['admin123', [Validators.minLength(6), Validators.required]],
     });
   }
 
@@ -54,6 +54,9 @@ export class LoginPage implements OnInit {
         next:async (user:any) =>{
           console.log(user);
           await loading.dismiss();
+          if(user['statusCode'] == 200){
+            this.router.navigate(['folder','Dashboard'])
+          }
         },
         error:async(error:any) =>{
           console.log(error);

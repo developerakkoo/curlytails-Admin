@@ -19,7 +19,7 @@
             <ion-card-title>Add Files</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-           <input type="file" name="file" id="">
+           <input type="file" name="file" id="" (change)="onFileEvent($event)">
           </ion-card-content>
         </ion-card>
       </ion-col>

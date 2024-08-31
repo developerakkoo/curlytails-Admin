@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { ProductHandlerService } from '../product-handler.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -50,7 +50,8 @@ export class AddProductPage implements OnInit {
       price:['',[Validators.required]],
       CategoryId:['',[Validators.required]],
       subCategoryId:['',[Validators.required]],
-      productCategoryId:[,[Validators.required]]
+      productCategoryId:[,[Validators.required]],
+      quantities:this.formBuilder.array([])
     })
   }
 
@@ -61,7 +62,24 @@ export class AddProductPage implements OnInit {
     
     
   }
-
+  get quantities(): FormArray {
+    return this.productForm.get('quantities') as FormArray;
+  }
+  
+  addQuantity(): void {
+    const quantityForm = this.formBuilder.group({
+      size: ['', [Validators.required]],
+      price: ['', [Validators.required]],
+      discountedPrice: ['', [Validators.required]],
+    });
+  
+    this.quantities.push(quantityForm);
+  }
+  
+  removeQuantity(index: number): void {
+    this.quantities.removeAt(index);
+  }
+  
   async presentLoading(msg:string) {
     const loading = await this.loadingController.create({
       message: msg,
@@ -94,6 +112,7 @@ export class AddProductPage implements OnInit {
         this.productForm.value.CategoryId,
         this.productForm.value.subCategoryId,
         this.productForm.value.productCategoryId,
+        this.productForm.value.quantities,
         this.files,
         "true",
         "false").subscribe({

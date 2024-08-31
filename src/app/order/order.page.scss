@@ -1,0 +1,14 @@
+.pagination{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: flex-start;
+}
+
+.form-select{
+    width: 200px;
+}

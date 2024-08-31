@@ -1,13 +1,43 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>refund</ion-title>
+    <ion-title>Refund</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">refund</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-grid fixed>
+    <ion-row *ngIf="refunds.length == 0">
+      <ion-col size="6" offset="3">
+        <ion-text color="primary" class="ion-text-center">
+          <h1>No refund requests found!</h1>
+        </ion-text>
+      </ion-col>
+      <ion-col size="6"></ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="refunds.length > 0">
+      <ion-col size="8">
+        <ion-list>
+          <ion-list-header>
+            <ion-label>All Refund requests</ion-label>
+            <ion-button>See All</ion-button>
+          </ion-list-header>
+
+          <ion-item *ngFor="let item of refunds">
+            <ion-label> OrderId:- {{item?.orderId}}
+              <p> Status:- 
+                {{item?.refundStatus}} </p>
+            </ion-label>
+
+            <ion-button color="success" (click)="accept(item)" slot="end" expand="block" fill="clear" shape="round">
+              Accept Refund
+            </ion-button>  <ion-button color="danger" (click)="accept(item)" slot="end" expand="block" fill="clear" shape="round">
+              Reject Refund
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col size="6"></ion-col>
+    </ion-row>
+   </ion-grid>
 </ion-content>

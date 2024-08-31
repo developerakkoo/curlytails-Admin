@@ -35,16 +35,16 @@
           <ion-list>
             <ion-item *ngFor="let item of products">
               <ion-avatar slot="start">
-                <img [src]="item.images[0]" />
+                <img [src]="item.images[0].link" />
               </ion-avatar>
               <ion-label>
                 <p> {{item.name}} </p>
                 <p>{{item.price | currency:"INR"}}</p>
               </ion-label>
-              <ion-button color="tertiary" fill="clear" (click)="editProduct()">
+              <ion-button color="tertiary" fill="clear" (click)="editProduct(item._id)">
                 <ion-icon slot="icon-only" name="create"></ion-icon>
               </ion-button>
-              <ion-button color="danger" fill="clear" (click)="deleteProduct()">
+              <ion-button color="danger" fill="clear" (click)="deleteProduct(item._id)">
                 <ion-icon slot="icon-only" name="trash"></ion-icon>
               </ion-button>
             </ion-item>

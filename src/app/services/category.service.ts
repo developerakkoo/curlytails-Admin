@@ -32,7 +32,7 @@ export class CategoryService {
   }
 
   getAllCategories(){
-    return this.http.get(environment.URL + `/getAll/category`);
+    return this.http.get(environment.URL + `category/getAll`);
   }
 
 

@@ -14,6 +14,14 @@ export class AnalyticsService {
   }
 
   getTotalAmount(){
-    return this.http.get(environment.URL + '');
+    return this.http.get(environment.URL + '/admin/get-total-earnings');
+  }
+
+  getMonthlyEearnings(){
+    return this.http.get(environment.URL + `/admin/get-monthly-earnings`);
+  }
+
+  getYearlyEarnings(){
+    return this.http.get(environment.URL + `/admin/get-yearly-earnings`);
   }
 }
